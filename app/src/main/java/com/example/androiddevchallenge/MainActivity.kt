@@ -17,45 +17,86 @@ package com.example.androiddevchallenge
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SnackbarHost
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarHost
+import androidx.compose.material.SnackbarHostState
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.ViewModelProvider
+import com.example.androiddevchallenge.ui.CatList
+import com.example.androiddevchallenge.ui.DetailPage
+import com.example.androiddevchallenge.ui.MainVM
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    val vm  by viewModels<MainVM>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                MyApp(vm)
             }
         }
     }
-}
 
-// Start building your app here!
-@Composable
-fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+    override fun onBackPressed() {
+        if (vm.cat == null) {
+            super.onBackPressed()
+        } else {
+            vm.cat = null
+        }
     }
-}
 
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp()
+
+    // Start building your app here!
+    @Composable
+    fun MyApp(viewModel: MainVM) {
+        val snackbarHostState = SnackbarHostState()
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Text("带我回家~")
+                    }
+                )
+            },
+            snackbarHost = {
+                SnackbarHost(snackbarHostState)
+            }
+        ) {
+
+            val currentDog = viewModel.cat
+
+            if (currentDog == null) {
+                CatList(viewModel)
+            } else {
+                DetailPage(cat = currentDog)
+            }
+        }
     }
-}
+    @Preview("Light Theme", widthDp = 360, heightDp = 640)
+    @Composable
+    fun LightPreview() {
+        MyTheme {
+            MyApp(vm)
+        }
+    }
 
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp()
+    @Preview("Dark Theme", widthDp = 360, heightDp = 640)
+    @Composable
+    fun DarkPreview() {
+        MyTheme(darkTheme = true) {
+            MyApp(vm)
+        }
     }
 }
