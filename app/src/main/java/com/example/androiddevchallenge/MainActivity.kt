@@ -30,7 +30,7 @@ import com.example.androiddevchallenge.ui.MainVM
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
-    val vm by viewModels<MainVM>()
+    private val vm by viewModels<MainVM>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
