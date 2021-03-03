@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModel
 import com.example.androiddevchallenge.data.Cat
 import com.example.androiddevchallenge.data.DataProvider
 
-
 class MainVM : ViewModel() {
     private val dataSource = DataProvider()
     fun fetchData() = dataSource.provideDatas()
