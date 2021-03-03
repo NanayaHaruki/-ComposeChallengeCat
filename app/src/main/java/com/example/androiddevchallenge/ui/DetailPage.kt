@@ -73,7 +73,7 @@ fun DetailPage(cat: Cat) {
                 error = { error: ImageLoadState.Error ->
                     Log.d(
                         "loadImg",
-                        error.throwable.localizedMessage?:""
+                        error.throwable.localizedMessage ?: ""
                     )
                 }
             )

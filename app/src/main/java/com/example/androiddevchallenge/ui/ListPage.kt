@@ -61,15 +61,25 @@ fun CatItem(vm: MainVM, cat: Cat) {
                 data = cat.picList.first(),
                 modifier = Modifier.size(120.dp),
                 contentDescription = cat.name,
-                contentScale= ContentScale.Crop,
+                contentScale = ContentScale.Crop,
                 fadeIn = true,
                 loading = {
                     Box(Modifier.fillMaxSize()) {
                         CircularProgressIndicator(Modifier.align(Alignment.Center))
                     }
                 },
-                onRequestCompleted = {imageLoadState -> Log.d("loadImg",imageLoadState.toString()) },
-                error = {error: ImageLoadState.Error -> Log.d("loadImg",error.throwable.localizedMessage?:"") }
+                onRequestCompleted = { imageLoadState ->
+                    Log.d(
+                        "loadImg",
+                        imageLoadState.toString()
+                    )
+                },
+                error = { error: ImageLoadState.Error ->
+                    Log.d(
+                        "loadImg",
+                        error.throwable.localizedMessage ?: ""
+                    )
+                }
             )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(text = cat.name)

@@ -23,10 +23,10 @@ import com.example.androiddevchallenge.data.Cat
 import com.example.androiddevchallenge.data.DataProvider
 
 
-class MainVM:ViewModel() {
+class MainVM : ViewModel() {
     val dataSource = DataProvider()
     fun fetchData() = dataSource.provideDatas()
 
     /** 列表页点击条目时赋值 */
-     var cat:Cat? by mutableStateOf<Cat?>(null)
+    var cat: Cat? by mutableStateOf<Cat?>(null)
 }
