@@ -78,6 +78,5 @@ fun DetailPage(cat: Cat) {
                 }
             )
         }
-
     }
 }

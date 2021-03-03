@@ -69,7 +69,7 @@ class DataProvider {
                     "http://www.maomilingyang.com/Upload/DownFiles/2021030239604749.jpg",
                     "http://www.maomilingyang.com/Upload/DownFiles/2021030239623917.jpg"
                 )
-            ),
+            )
         )
     }
 }
