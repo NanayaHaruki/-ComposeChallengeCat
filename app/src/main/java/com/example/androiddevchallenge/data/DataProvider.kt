@@ -17,7 +17,7 @@ package com.example.androiddevchallenge.data
 
 class DataProvider {
     fun provideDatas(): List<Cat> {
-        return listOf<Cat>(
+        return listOf(
             Cat(
                 "汤圆",
                 "苏女士",
