@@ -39,7 +39,7 @@ import com.example.androiddevchallenge.ui.MainVM
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    val vm  by viewModels<MainVM>()
+    val vm by viewModels<MainVM>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -77,13 +77,13 @@ class MainActivity : AppCompatActivity() {
 
             val currentDog = viewModel.cat
 
-            if (currentDog == null) {
-                CatList(viewModel)
-            } else {
-                DetailPage(cat = currentDog)
+            CatList(viewModel)
+            if (viewModel.cat != null) {
+                DetailPage(viewModel.cat!!)
             }
         }
     }
+
     @Preview("Light Theme", widthDp = 360, heightDp = 640)
     @Composable
     fun LightPreview() {
