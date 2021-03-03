@@ -41,20 +41,22 @@ import dev.chrisbanes.accompanist.imageloading.ImageLoadState
 @Composable
 fun CatList(vm: MainVM) {
     val datas = vm.fetchData()
-    LazyColumn(content = {
-        items(datas) { cat ->
-            CatItem(vm, cat)
+    LazyColumn(
+        content = {
+            items(datas) { cat ->
+                CatItem(vm, cat)
+            }
         }
-    })
-
+    )
 }
 
 @Composable
 fun CatItem(vm: MainVM, cat: Cat) {
-    Card(modifier = Modifier
-        .padding(16.dp)
-        .clickable { vm.cat = cat }
-        .fillMaxWidth()
+    Card(
+        modifier = Modifier
+            .padding(16.dp)
+            .clickable { vm.cat = cat }
+            .fillMaxWidth()
     ) {
         Row() {
             CoilImage(
