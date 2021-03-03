@@ -19,24 +19,15 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.SnackbarHost
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.ui.theme.MyTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.SnackbarHost
-import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.lifecycle.ViewModelProvider
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.androiddevchallenge.ui.CatList
 import com.example.androiddevchallenge.ui.DetailPage
 import com.example.androiddevchallenge.ui.MainVM
-import kotlinx.coroutines.launch
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
     val vm by viewModels<MainVM>()
@@ -61,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     // Start building your app here!
     @Composable
     fun MyApp(viewModel: MainVM) {
-        val snackbarHostState = SnackbarHostState()
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -70,13 +60,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
             },
-            snackbarHost = {
-                SnackbarHost(snackbarHostState)
-            }
         ) {
-
-            val currentDog = viewModel.cat
-
             CatList(viewModel)
             if (viewModel.cat != null) {
                 DetailPage(viewModel.cat!!)
