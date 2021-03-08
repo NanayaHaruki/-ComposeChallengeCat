@@ -24,8 +24,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.androiddevchallenge.ui.CatList
-import com.example.androiddevchallenge.ui.DetailPage
+import com.example.androiddevchallenge.ui.CountDown
 import com.example.androiddevchallenge.ui.MainVM
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
@@ -54,15 +53,16 @@ class MainActivity : AppCompatActivity() {
             topBar = {
                 TopAppBar(
                     title = {
-                        Text("带我回家~")
+                        Text("倒计时")
                     }
                 )
             },
         ) {
-            CatList(viewModel)
+            /*CatList(viewModel)
             if (viewModel.cat != null) {
                 DetailPage(viewModel.cat!!)
-            }
+            }*/
+            CountDown()
         }
     }
 

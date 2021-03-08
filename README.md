@@ -2,14 +2,14 @@
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
-![Workflow result](https://github.com/<OWNER>/<REPOSITORY>/workflows/Check/badge.svg)
+![Workflow result](https://github.com/NanayaHaruki/-ComposeChallengeCat/workflows/Check/badge.svg)
 
 
-## :scroll: Description
+## :scroll: 第二周 倒计时
 <!--- Describe your app in one or two sentences -->
 
 
-## :bulb: Motivation and Context
+## :bulb: 滚动条选择时间，状态控制根据计时的准备、暂停状态显示不同的页面组合
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
 
